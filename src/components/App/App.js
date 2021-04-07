@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import { getRes } from '../components/api_calls.js'; 
+import { getRes } from '../api_calls.js'; 
+import Reservations from '../Reservations/Reservations.js'; 
 
 class App extends Component {
   constructor() {
@@ -13,7 +14,7 @@ class App extends Component {
 
   componentDidMount() {
     getRes() 
-      .then(res => this.setState({ res }))
+      .then(reservations => this.setState({ reservations }))
       .catch(err => this.setState({ error: 'Something went wrong!'}))
   }
 
@@ -26,7 +27,7 @@ class App extends Component {
 
         </div>
         <div className='resy-container'>
-          
+          <Reservations reservations={this.state.reservations}/>
         </div>
       </div>
     )
