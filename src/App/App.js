@@ -1,7 +1,23 @@
 import React, { Component } from 'react';
 import './App.css';
+import { getRes } from './components/api_calls.js'; 
 
 class App extends Component {
+  constructor() {
+    super(); 
+      this.state = {
+        reservations: [], 
+        error: ''
+      }; 
+  }
+
+  componentDidMount() {
+    getRes() 
+      .then(res => this.setState({ res }))
+      .catch(err => this.setState({ error: 'Something went wrong!'}))
+  }
+
+
   render() {
     return (
       <div className="App">
