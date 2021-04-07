@@ -1,5 +1,15 @@
 .card {
     background-color: white;
+    border-radius: 10px;
     border: solid teal;
-    width: 100%;
+    color: teal; 
+    width: 200px;
+    padding: 10px; 
+}
+
+.cancel-button {
+    border-radius: 10px;
+    background-color: teal;
+    color: white; 
+    width: 50%;
 }
