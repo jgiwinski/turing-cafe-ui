@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { getRes, postRes } from '../api_calls.js'; 
+import { getRes, postRes, deleteRes } from '../api_calls.js'; 
 import Reservations from '../Reservations/Reservations.js'; 
 import Form from '../Form/Form.js'; 
 
@@ -30,6 +30,18 @@ class App extends Component {
       })
   }
 
+  removeRes = (id) => {
+    deleteRes(id) 
+      .then(response => {
+        if(response.ok) {
+          const filteredRes = this.state.reservations.filter(res => res.id != id)
+          this.setState({ reservations: filteredRes, error: '' })
+        } else {
+          this.setState({ error: `Oh no, looks like there was a problem!`})
+        }
+      })
+  }
+
   render() {
     return (
       <div className="App">
@@ -38,7 +50,7 @@ class App extends Component {
           <Form addRes={this.addRes}/>
         </div>
         <div className='resy-container'>
-          <Reservations reservations={this.state.reservations}/>
+          <Reservations reservations={this.state.reservations} removeRes={this.removeRes}/>
         </div>
       </div>
     )

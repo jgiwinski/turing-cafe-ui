@@ -13,3 +13,7 @@ export const postRes = (newRes) => {
     })
         .then(response => response.json())
 }
+
+export const deleteRes = (id) => {
+    return fetch(`${baseURL}/${id}`, {method: 'DELETE'})
+}
