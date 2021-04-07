@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { getRes } from './components/api_calls.js'; 
+import { getRes } from '../components/api_calls.js'; 
 
 class App extends Component {
   constructor() {
