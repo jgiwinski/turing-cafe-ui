@@ -1,7 +1,7 @@
 import React from 'react'; 
 import './resCard.css'; 
 
-const ResCard = ({ id, name, date, time, number }) => {
+const ResCard = ({ name, date, time, number }) => {
     return (
         <section className='card'>
             <h2>{name}</h2>

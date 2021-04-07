@@ -8,7 +8,7 @@ class Form extends Component {
             name: '',
             date: '',
             time: '',
-            number: null
+            number: ''
         }
     }
 
@@ -22,12 +22,18 @@ class Form extends Component {
             name: '',
             date: '',
             time: '',
-            number: null 
+            number: '' 
         })
     }
 
     submitRes = event => {
-        
+        event.preventDefault(); 
+        const newRes = {
+            id: Date.now(), 
+            ...this.state
+        }
+        this.props.addRes(newRes)
+        this.clearForm(); 
     }
 
     render () {
@@ -61,7 +67,7 @@ class Form extends Component {
                     value={this.state.number}
                     onChange={event => this.handleChange(event)}
                 />
-                <button>SUBMIT</button>
+                <button onClick={event => this.submitRes(event)}>MAKE RESERVATION</button>
             </form>
         )
     }
